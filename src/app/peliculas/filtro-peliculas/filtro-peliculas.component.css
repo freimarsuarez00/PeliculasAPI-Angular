@@ -1,0 +1,8 @@
+.custom-warn-button {
+    background-color: #da163d !important; /* Rojo */
+    color: #ffffff !important; /* Blanco */
+  }
+
+  button{
+    margin-bottom: 1rem;
+  }

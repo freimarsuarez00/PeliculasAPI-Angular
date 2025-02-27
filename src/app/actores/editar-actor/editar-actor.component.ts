@@ -1,21 +1,25 @@
 import { Component, Input, numberAttribute } from '@angular/core';
-import { ActorCreacionDTO, ActorDTO } from '../actores';
 import { FormularioActoresComponent } from "../formulario-actores/formulario-actores.component";
+import { MostrarErroresComponent } from "../../compartidos/componentes/mostrar-errores/mostrar-errores.component";
+import { CargandoComponent } from "../../compartidos/componentes/cargando/cargando.component";
+import { EditarEntidadComponent } from "../../compartidos/componentes/editar-entidad/editar-entidad.component";
+import { SERVICIO_CRUD_TOKEN } from '../../compartidos/proveedores/proveedores';
+import { ActoresService } from '../actores.service';
 
 @Component({
   selector: 'app-editar-actor',
-  imports: [FormularioActoresComponent],
+  imports: [FormularioActoresComponent, MostrarErroresComponent, CargandoComponent, EditarEntidadComponent],
   templateUrl: './editar-actor.component.html',
-  styleUrl: './editar-actor.component.css'
+  styleUrl: './editar-actor.component.css',
+  providers:[
+    {provide: SERVICIO_CRUD_TOKEN, useClass: ActoresService}
+  ]
 })
 export class EditarActorComponent {
 
     @Input({transform: numberAttribute})
     id!: number;
 
-    actor: ActorDTO = {id:1, nombre: 'Tom Holland', fechaNacimiento: new Date('1991-01-25'), foto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Tom_Holland_by_Gage_Skidmore.jpg/220px-Tom_Holland_by_Gage_Skidmore.jpg'};
+    formularioActores = FormularioActoresComponent;
 
-    guardarCambios(actor: ActorCreacionDTO){
-      console.log('Editando el actor', actor);
-    }
 }

@@ -13,7 +13,7 @@ export class EditarCineComponent {
     @Input({transform: numberAttribute})
     id!: number;
 
-    cine:CineDTO = {id:1, nombre: 'Acropolis'};
+    cine:CineDTO = {id:1, nombre: 'Valledupar', latitud: 10.470659737260432, longitud: -73.23944195362105};
 
     guardarCambios(cine: CineCreacionDTO){
       console.log('Editar el cine', cine);
